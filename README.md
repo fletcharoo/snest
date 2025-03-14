@@ -1,13 +1,6 @@
 # snest
 snest offers functionality to load environent variables straight into a struct through the use of `snest` struct tags.
 
-Features:
-* Load environment variables into struct fields through JSON unmarshaling.
-
-TODO:
-* Load environment variables into struct recursively allowing for sub-struct fields to be populated.
-* Support `[]byte` type.
-
 ## Installation
 `go get github.com/fletcharoo/snest`
 
@@ -19,8 +12,9 @@ type Config struct {
 	Port int    `snest:"API_PORT"`
 }
 
-func LoadConfig() (conf Config, err error) {
-	err = snest.Load(&conf)
+func LoadConfig() (Config, error) {
+	conf := Config{}
+	err := snest.Load(&conf)
 	return conf, err
 }
 ```

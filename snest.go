@@ -8,7 +8,9 @@ import (
 )
 
 // Load accepts a pointer to a struct and populates its fields with environment
-// variables defined in the snest tag.
+// variables defined by the snest tag.
+// If input is not a pointer, Load will return an error.
+// If input is not a struct, Load will return an error.
 func Load(input any) (err error) {
 	val := reflect.ValueOf(input)
 	if val.Kind() != reflect.Ptr {
