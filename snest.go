@@ -39,6 +39,10 @@ func Load(input any) (err error) {
 		}
 
 		envValue := os.Getenv(envName)
+		if envValue == "" {
+			continue
+		}
+
 		switch fieldVal.Kind() {
 		case reflect.String:
 			envValue = `"` + envValue + `"`
